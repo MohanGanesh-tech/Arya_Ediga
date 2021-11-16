@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1068799150718",
+    "project_id": "aryaedigaapp",
+    "storage_bucket": "aryaedigaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068799150718:android:5ea88977bdddbc2ea4e62f",
+        "android_client_info": {
+          "package_name": "com.example.arya_ediga_app_1v"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068799150718-mbboun89ikbogittnddqtggr9fjv4mq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuGzI_3unXWBGVVlooYzLJ25w7NEZmfjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068799150718-mbboun89ikbogittnddqtggr9fjv4mq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

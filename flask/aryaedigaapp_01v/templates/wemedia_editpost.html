@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <title>Arya Ediga App</title>
+    <link rel="shortcut icon" href="../static/image/wallpaperflare.com_wallpaper (2).jpg" type="image/x-icon">
+
+
+  </head>
+  <body>
+      
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #56baed;">
+      <a class="navbar-brand" href="#">
+          <img src="./static/image/arya_ediga_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          <span style="color: azure;"> Arya Ediga App</span>
+        </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/wemediahome"><span style="color: azure;">Home</span> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">News</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/postnews">Post News</a>
+                <a class="dropdown-item" href="/viewnews">View News</a>
+              
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">Student</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/postinfo">Post Info</a>
+                <a class="dropdown-item" href="/viewinfo">View Info</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/wemediaprofile"><span style="color: azure;">Profile</span></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/wemedialogout">
+                <button class="btn btn-outline-danger">Logout</button>
+              </a>
+          </li>
+      </ul>
+      </div>
+    </nav>
+
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <div class="fadeIn first">
+            <img src="../static/image/arya_ediga_logo1.png" width="80px"  height="100px" alt="User Icon" style="padding-top: 20px;"  />
+          </div><br>
+                <!-- Post News Form -->
+          <form action="/editnews" method="POST" enctype="multipart/form-data">
+            <div class="container">
+              <img class="card-img-top" src="{{ news.to_dict().get('photo') }}" alt="Card image cap" width="80" height="100"><br><br>
+                <div class="container">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="newsphoto" name="newsphoto" value="{{ news.to_dict().get('photo') }}">
+                    <input type="text" id="photostatus" name="photostatus" value="0" hidden>
+                    <label class="custom-file-label" for="customFile"><p id="demo">Choose file*</p></label>
+                </div>
+            </div>
+        </div>
+            <input type="text" id="title" class="fadeIn second" name="title" placeholder="Title*" value="{{ news.to_dict().get('title') }}" required>
+            <input type="text" id="description" class="fadeIn third" name="description" placeholder="Description*" value="{{ news.to_dict().get('desc') }}" required>
+            <input type="text" value="{{news.id}}" name="newsid" hidden>
+            <input type="submit" class="fadeIn fourth" value="Update">
+          </form>
+        
+        </div>
+      </div>
+
+    <script>
+        document.getElementById("newsphoto").onchange = function() {myFunction()};
+
+        function myFunction() {
+          console.log("onChange Event Occurs")
+          document.getElementById("photostatus").value = "1";
+          document.getElementById("demo").innerHTML = document.getElementById('newsphoto').value;
+
+        }
+
+    </script>
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

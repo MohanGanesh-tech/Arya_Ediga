@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/css/home.css">
+    <title>Arya Ediga App</title>
+    <link rel="shortcut icon" href="./static/image/wallpaperflare.com_wallpaper (2).jpg" type="image/x-icon">
+
+    <style>
+      .modal {
+        display: none;
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+  
+      /* Modal Content */
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+  
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+  
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+        </style>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #56baed;">
+      <a class="navbar-brand" href="#">
+          <img src="./static/image/arya_ediga_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          <span style="color: azure;"> Arya Ediga App</span>
+        </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/adminhome"><span style="color: azure;">Home</span> <span class="sr-only">(current)</span></a>
+          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">Hostel</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/pendinghostelapps">Pending Applications</a>
+                <a class="dropdown-item" href="/acceptedhostelapps">Accepted Applications</a>
+                <a class="dropdown-item" href="/rejectedhostelapps">Rejected Applications</a>
+                <hr>
+                <a class="dropdown-item" href="/posthostel">Post Hostel</a>
+                <a class="dropdown-item" href="/viewhostel">View Hostels List </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">Scholarships</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/pendingscholarshipapps">Pending Applications</a>
+                <a class="dropdown-item" href="/acceptedscholarshipapps">Accepted Applications</a>
+                <a class="dropdown-item" href="/rejectedscholarshipapps">Rejected Applications</a>
+                <hr>
+                <a class="dropdown-item" href="/postscholarship">Post Scholarships</a>
+                <a class="dropdown-item" href="/viewscholarship">View Scholarships List</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">Wemedia Profiles</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/pendingprofile">Pending Profiles</a>
+                <a class="dropdown-item" href="/activeprofile">Active Profiles</a>
+                <a class="dropdown-item" href="/blockedprofile">Blocked Profiles</a> 
+              </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/wemedialogout">
+                <button class="btn btn-outline-danger">Logout</button>
+              </a>
+          </li>
+      </ul>
+      </div>
+    </nav>
+      <br>
+      <h3 style="color: #56baed; text-align: center;">Wemedia Blocked Profiles</h3>
+      <br>
+    
+      <div class="container">
+      <table class="table">
+        <table class="table table-borderless">
+          <tr>
+            <th>#</th>
+            <th>Profile Photo</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for profile in result %}
+          <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td><img src="{{ profile.to_dict().get('profile_photo') }}" width="100" height="100"></td>
+            <td>{{ profile.to_dict().get('profile_name') }}</td>
+            <td>{{ profile.to_dict().get('email') }}</td>
+            <td>{{ profile.to_dict().get('phone') }}</td>
+            <td><button type="button" class="btn btn-outline-success" onclick="active('{{ profile.id }}')">Active</button></td>
+            <td><button type="button" class="btn btn-outline-dark" onclick="pending('{{ profile.id }}')">Pending</button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div id="activeform" class="activeform modal">
+      <div class="modal-content">
+        <span class="activeclose close">&times;</span>
+        <h4>Active Application</h4>
+        <form action="activatewemideaprofile" method="POST">
+          <input type="text" name="page" value="block" hidden>
+          <input type="text" id="activateproid" name="activateproid" hidden>
+          <input type="submit" class="btn-outline-danger" value="Comfirm">
+        </form>
+      </div>
+    </div>
+    
+    <div id="pendingform" class="pendingform modal">
+      <div class="modal-content">
+        <span class="pendingclose close">&times;</span>
+        <h4>pending Application</h4>
+        <p>Enter Reason</p>
+        <form action="pendingwemideaprofile" method="POST">
+          <input type="text" name="page" value="block" hidden>
+          <input type="text" id="pendproid" name="pendproid" hidden>
+          <input type="text" name="reason" placeholder="Enter Reason" >
+          <input type="submit" class="btn-outline-dark" value="Comfirm">
+        </form>
+
+      </div>
+    </div>
+    
+    <script>
+      var pendingmodal = document.getElementById("pendingform");
+      var activemodal = document.getElementById("activeform");
+
+      var pendingspan = document.getElementsByClassName("pendingclose")[0];
+      var activespan = document.getElementsByClassName("activeclose")[0];
+
+      function pending(appid) {
+        console.log(appid);
+        document.getElementById('pendproid').value = appid;
+        activeform.style.display = "none";
+        pendingform.style.display = "block";
+      }
+
+      function active(appid) {
+        console.log(appid);
+        document.getElementById('activateproid').value = appid;
+        pendingform.style.display = "none";
+        activeform.style.display = "block";
+      }
+
+      pendingspan.onclick = function() {
+        pendingform.style.display = "none";
+      }
+
+      activespan.onclick = function() {
+        activeform.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == pendingmodal) {
+          pendingform.style.display = "none";
+        }
+        if (event.target == activemodal) {
+          activeform.style.display = "none";
+        }
+      }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

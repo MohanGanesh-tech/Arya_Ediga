@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <title>Arya Ediga App</title>
+    <link rel="shortcut icon" href="../static/image/wallpaperflare.com_wallpaper (2).jpg" type="image/x-icon">
+
+
+  </head>
+
+
+<body style="background-image: url('./static/image/b45.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="./static/image/arya_ediga_logo1.png" width="130px"  height="150px" alt="User Icon" style="padding-top: 20px; background-color: #fff;"  />
+          </div><br>
+          <p style="font-size: x-large;font-style: oblique; font-family: 'Times New Roman', Times, serif; color:#56baed;">WeMedia Signup Form</p>
+          <form method="POST" action="wemediasignup" enctype="multipart/form-data">
+            <div class="container">
+              <div class="container">
+                <div class="custom-file">
+                    <label class="custom-file-label" for="profilephoto"><p id="demo">Choose file*</p></label>
+                    <input type="file" class="custom-file-input" id="profilephoto" name="profilephoto" onchange="img()" required>
+                </div>
+              </div>
+            </div>
+            <input type="text" id="name" class="fadeIn second" name="name" placeholder="Name*" required>
+            <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email*" required>
+            <input type="text" id="phone" class="fadeIn second" name="phone" placeholder="Phone number*" required>
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password*" required>
+            <input type="submit" class="fadeIn fourth" value="Sign Up">
+          </form>
+
+          <div id="formFooter">
+            <a class="underlineHover" href="/">Login</a>
+          </div>
+        
+        </div>
+      </div>
+
+      <script>
+        function img(){
+          document.getElementById("demo").innerHTML = document.getElementById('profilephoto').value;
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <title>Arya Ediga App</title>
+    <link rel="shortcut icon" href="../static/image/wallpaperflare.com_wallpaper (2).jpg" type="image/x-icon">
+
+
+  </head>
+  <body>
+      
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #56baed;">
+      <a class="navbar-brand" href="#">
+          <img src="./static/image/arya_ediga_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          <span style="color: azure;"> Arya Ediga App</span>
+        </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/adminhome"><span style="color: azure;">Home</span> <span class="sr-only">(current)</span></a>
+          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">Hostel</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/pendinghostelapps">Pending Applications</a>
+                <a class="dropdown-item" href="/acceptedhostelapps">Accepted Applications</a>
+                <a class="dropdown-item" href="/rejectedhostelapps">Rejected Applications</a>
+                <hr>
+                <a class="dropdown-item" href="/posthostel">Post Hostel</a>
+                <a class="dropdown-item" href="/viewhostel">View Hostels List </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">Scholarships</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/pendingscholarshipapps">Pending Applications</a>
+                <a class="dropdown-item" href="/acceptedscholarshipapps">Accepted Applications</a>
+                <a class="dropdown-item" href="/rejectedscholarshipapps">Rejected Applications</a>
+                <hr>
+                <a class="dropdown-item" href="/postscholarship">Post Scholarships</a>
+                <a class="dropdown-item" href="/viewscholarship">View Scholarships List</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="color: azure;">Wemedia Profiles</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/pendingprofile">Pending Profiles</a>
+                <a class="dropdown-item" href="/activeprofile">Active Profiles</a>
+                <a class="dropdown-item" href="/blockedprofile">Blocked Profiles</a> 
+              </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/wemedialogout">
+                <button class="btn btn-outline-danger">Logout</button>
+              </a>
+          </li>
+      </ul>
+      </div>
+    </nav>
+
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="../static/image/arya_ediga_logo1.png" width="80px"  height="100px" alt="User Icon" style="padding-top: 20px;"  />
+          </div><br>
+                <!-- Post News Form -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                      <p style="size: 20px; color: green;">{{ message }}<br></p>
+                    {% endfor %}
+                {% endif %}
+              {% endwith %}
+          <form action="addpostscholarship" method="POST" enctype="multipart/form-data">
+            <h5 style="color: #56baed;">Add Scholarship</h5>
+            <input type="text" id="title" class="fadeIn second" name="title" placeholder="Title">
+            <input type="text" id="desc" class="fadeIn third" name="desc" placeholder="Description">
+            <input type="date" id="start_date" class="fadeIn third" name="start_date" placeholder="Start Date">
+            <input type="date" id="last_date" class="fadeIn third" name="last_date" placeholder="Last Date">
+            <input type="submit" class="fadeIn fourth" value="Submit">
+          </form>
+        
+        </div>
+      </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
